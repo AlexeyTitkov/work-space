@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Work Space</title>
+</head>
+<body>
+
+<header>
+  <div class="container header__container">
+    <img class="header__logo" src="./src/images/logo.svg" alt="logo Work Space">
+    <a href="#vacancies" class="header__link">Посмотреть вакансии</a>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="container hero__container">
+      <h1 class="hero__title">Найди работу</h1>
+      <span class="blue-text">своей мечты</span>
+    </div>
+  </section>
+  <div class="vacancies" id="vacancies">
+    <div class="container vacancies__container">
+      <section class="vacancies__filter filter">
+        <h2 class="filter__title"></h2>
+        <form class="filter__form">
+          <fieldset class="filter__fieldset">
+            <legend class="filter__legend">Город</legend>
+
+            <select class="filter__select" name="city" id="city">
+              <option value="">Выбрать город</option>
+              <option>Витебск</option>
+              <option>Гродно</option>
+              <option>Минск</option>
+            </select>
+          </fieldset>
+
+          <fieldset class="filter__fieldset">
+            <legend class="filter__legend">Заработная плата</legend>
+
+            <div class="filter__range">
+              <input type="number" name="pay-from" class="filter__input" placeholder="от">
+              <input type="number" name="pay-to" class="filter__input" placeholder="до">
+            </div>
+          </fieldset>
+
+          <div class="filter__checkboxes">
+            <fieldset class="filter__fieldset">
+              <legend class="filter__legend">Формат</legend>
+              
+              <label class="filter__label checkbox">
+                <input type="checkbox" name="format" value="Офис" class="checkbox__input">
+              </label>Офис
+
+              <label class="filter__label checkbox">
+                <input type="checkbox" name="format" value="Удаленный" class="checkbox__input">
+              </label>Удаленный
+
+              <label class="filter__label checkbox">
+                <input type="checkbox" name="format" value="Гибкий" class="checkbox__input">
+              </label>Гибкий
+            </fieldset>
+
+            <fieldset class="filter__fieldset">
+              <legend class="filter__legend">Опыт работы</legend>
+
+              <label class="filter__label checkbox">
+                <input type="checkbox" name="experience" value="Опыт не важен" class="checkbox__input">
+              </label>Опыт не важен
+
+              <label class="filter__label checkbox">
+                <input type="checkbox" name="experience" value="Без опыта" class="checkbox__input">
+              </label>Без опыта
+
+              <label class="filter__label checkbox">
+                <input type="checkbox" name="experience" value="От 1 года до 3-х лет" class="checkbox__input">
+              </label>От 1 года до 3-х лет
+
+              <label class="filter__label checkbox">
+                <input type="checkbox" name="experience" value="От 3-х лет" class="checkbox__input">
+              </label>От 3-х лет
+            </fieldset>
+
+            <fieldset class="filter__fieldset">
+              <legend class="filter__legend">Занятость</legend>
+
+              <label class="filter__label checkbox">
+                <input type="checkbox" name="type" value="Полная занятость" class="checkbox__input">
+              </label>Полная занятость
+
+              <label class="filter__label checkbox">
+                <input type="checkbox" name="type" value="Частичная занятость" class="checkbox__input">
+              </label>Частичная занятость
+
+              <label class="filter__label checkbox">
+                <input type="checkbox" name="type" value="Стажировка" class="checkbox__input">
+              </label>Стажировка
+
+              <label class="filter__label checkbox">
+                <input type="checkbox" name="type" value="Проектная работа" class="checkbox__input">
+              </label>Проектная работа
+            </fieldset>
+          </div>
+
+          <div class="filter__buttons">
+            <button class="filter__button" type="submit">Применить</button>
+            <button class="filter__reset" type="reset">Очистить</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="vacancies__cards cards">
+        <h2 class="cards__title visually-hidden">Список вакансий</h2>
+
+        <ul class="cards__list">
+          <li class="cards__item">
+            <article class="vacancy" tabindex="0">
+              <img class="vacancy__img" src="./src/images/yadro.svg" alt="logo YADRO">
+              <p class="vacancy__company">YADRO</p>
+              <h3 class="vacancy__title">Инженер</h3>
+              <ul class="vacancy__fields">
+                <li class="vacancy__field">от 150 000₽</li>
+                <li class="vacancy__field">полная занятость</li>
+                <li class="vacancy__field">офис</li>
+                <li class="vacancy__field">опыт от 3-х лет</li>
+              </ul>
+            </article>
+          </li>
+          <li class="cards__item">
+            <article class="vacancy" tabindex="1">
+              <img class="vacancy__img" src="./src/images/creative-people.svg" alt="logo Creative People">
+              <p class="vacancy__company">Creative People</p>
+              <h3 class="vacancy__title">Графический дизайнер</h3>
+              <ul class="vacancy__fields">
+                <li class="vacancy__field">от 110 000₽</li>
+                <li class="vacancy__field">проектная работа</li>
+                <li class="vacancy__field">удаленный</li>
+                <li class="vacancy__field">опыт от 1 года до 3-х лет</li>
+              </ul>
+            </article>
+          </li>
+        </ul>
+      </section>
+    </div>
+
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="container footer__container">
+    <img src="./src/images/logo-footer.svg" alt="logo-footer" class="logo Work Space">
+    <p class="footer__copyright">© Work Space, 2023</p>
+  </div>
+  <ul class="footer__contacts">
+    <li class="footer__contact"> Designer:
+      <a class="footer__contact-link" href="https://t.me/Alexey_Titkov">Anastasia Ilina</a>
+    </li>
+    <li class="footer__contact"> Developer:
+      <a class="footer__contact-link" href="https://t.me/Alexey_Titkov">Alexey Titkov</a>
+    </li>
+  </ul>
+</footer>
+
+</body>
+</html>
