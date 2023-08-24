@@ -17,6 +17,7 @@ html {
 *:before,
 *:after {
   box-sizing: inherit;
+  transition: all 0.2s ease-in-out;
 }
 
 body {
@@ -31,7 +32,7 @@ body {
 
 img, svg {
   max-width: 100%;
-  min-height: 100%;
+  max-height: 100%;
   height: auto;
 }
 
@@ -77,4 +78,8 @@ fieldset {
   max-width: calc(var(--width) + (var(--padding) * 2));
   padding: 0 var(--padding);
   margin: 0 auto;
+}
+
+.blue-text {
+  color: #2A18FF;
 }
