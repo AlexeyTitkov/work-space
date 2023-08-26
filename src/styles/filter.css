@@ -52,7 +52,7 @@
 }
 
 .filter__input::placeholder {
-color: #CCCCCC;
+  color: #CCCCCC;
 }
 
 .filter__checkboxes {
@@ -74,4 +74,31 @@ color: #CCCCCC;
   background-color: #A6ADFF;
 }
 
+@media (max-width: 940px) {
+  .filter__title {
+    position: fixed;
+    transform: scale(0);
+  }
+
+  .filter__input {
+    width: 135px;
+  }
+
+  .filter__checkboxes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 24px;
+    justify-content: space-between;
+  }
+
+  .filter__buttons {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+  }
+
+  .filter__reset{
+    position: static;
+  }
+}
 

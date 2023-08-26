@@ -1,6 +1,7 @@
 .detail {
   max-width: 780px;
-  background-color: #fff;
+  background: #fff url("../images/likemen.png") no-repeat bottom right;
+  background-size: 150px;
   border-radius: 16px;
   box-shadow: 0 10px 50px 0 rgba(4, 0, 49, 0.10);
   padding: 36px 36px 80px;
@@ -38,30 +39,77 @@
   padding: 5px 10px;
 }
 
-.detail__main{
+.detail__main {
   display: flex;
   gap: 20px;
   margin-bottom: 32px;
 }
 
-.detail__description{
+.detail__description {
   max-width: 465px;
   line-height: 1.4;
 }
 
-.detail__fields{
+.detail__fields {
   display: flex;
   flex-direction: column;
   align-items: start;
   gap: 4px;
 }
 
-.detail__field{
+.detail__field {
   padding: 3px 10px;
   border-radius: 30px;
   background-color: #EAECFF;
 }
 
-.detail__resume{
+.detail__resume {
   line-height: 1.4;
+}
+
+@media (max-width: 940px) {
+  .detail {
+    max-width: 680px;
+    padding: 24px 24px 72px;
+  }
+
+  .detail__main {
+    gap: 10px;
+  }
+
+  .detail__description {
+    max-width: 418px;
+  }
+}
+
+@media (max-width: 640px) {
+  .detail {
+    padding: 24px 15px;
+    background-image: none;
+  }
+
+  .detail__header {
+    grid-template-columns: 60px 1fr;
+    gap: 4px 8px;
+    margin-bottom: 24px;
+  }
+
+  .detail__company {
+    font-size: 20px;
+    letter-spacing: 0.4px;
+  }
+
+  .detail__title {
+    font-size: 12px;
+  }
+
+  .detail__main {
+    flex-direction: column;
+    gap: 24px;
+    margin-bottom: 24px;
+  }
+
+  .detail__description{
+    max-width: 100%;
+  }
 }

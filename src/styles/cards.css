@@ -9,3 +9,10 @@
 
 .cards__item {
 }
+
+@media (max-width: 940px) {
+  .cards__list {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 10px;
+  }
+}
