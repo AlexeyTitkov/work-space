@@ -177,7 +177,7 @@ const init = () => {
 
   
   getData(
-    `${API_URL}${VACANCY_URL}`,
+    `${API_URL}${LOCATION_URL}`,
     (locationData) => {
       const locations = locationData.map(location => ({
         value: location
@@ -231,7 +231,7 @@ const init = () => {
       urlWithParam,
       renderVacancies,
       renderError).then(() => {
-      lastUrl = url
+      lastUrl = urlWithParam
     })
   })
 }
