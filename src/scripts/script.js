@@ -165,17 +165,57 @@ const observer = new IntersectionObserver((entries) => {
   rootMargin: "100px"
 })
 
+const openFilter = (button, dropDown, classNameButton, classNameDropDown) => {
+  dropDown.style.height = `${dropDown.scrollHeight}px`
+  button.classList.add(classNameButton)
+  button.classList.add(classNameDropDown)
+}
+
+const closeFilter = (button, dropDown, classNameButton, classNameDropDown) => {
+  button.classList.remove(classNameButton)
+  button.classList.remove(classNameDropDown)
+  dropDown.style.height = ``
+}
+
 const init = () => {
   const filterForm = document.querySelector('.filter__form')
+  const vacanciesFilterButton = document.querySelector('.vacancies__filter-button')
+  const vacanciesFilter = document.querySelector('.vacancies__filter')
 
-  // select city
+  vacanciesFilterButton.addEventListener('click', () => {
+    if (vacanciesFilterButton.classList.contains('vacancies__filter-button_active')) {
+      closeFilter(
+        vacanciesFilterButton,
+        vacanciesFilter,
+        'vacancies__filter-button_active',
+        'vacancies__filter_active',)
+    } else {
+      openFilter(
+        vacanciesFilterButton,
+        vacanciesFilter,
+        'vacancies__filter-button_active',
+        'vacancies__filter_active',)
+    }
+
+  })
+
+  window.addEventListener('resize', () => {
+    if (vacanciesFilterButton.classList.contains('vacancies__filter-button_active')) {
+      closeFilter(
+        vacanciesFilterButton,
+        vacanciesFilter,
+        'vacancies__filter-button_active',
+        'vacancies__filter_active',)
+    }
+  })
+
+  // select city_
   const citySelect = document.querySelector('#city')
   const cityChoices = new Choices(citySelect, {
     itemSelectText: '',
   });
-  
 
-  
+
   getData(
     `${API_URL}${LOCATION_URL}`,
     (locationData) => {
@@ -232,6 +272,12 @@ const init = () => {
       renderVacancies,
       renderError).then(() => {
       lastUrl = urlWithParam
+    }).then(() => {
+      closeFilter(
+        vacanciesFilterButton,
+        vacanciesFilter,
+        'vacancies__filter-button_active',
+        'vacancies__filter_active',)
     })
   })
 }
