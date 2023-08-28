@@ -124,6 +124,33 @@ const createDetailVacancy = ({
   `
 }
 
+const scrollService = {
+  scrollPosition: 0,
+  disabledScroll() {
+    this.scrollPosition = window.scrollY;
+    document.documentElement.style.scrollBehavior = "auto";
+    document.body.style.cssText = `
+      overflow: hidden;
+      position: fixed;
+      top: -${this.scrollPosition}px;
+      left: 0;
+      height: 100vh;
+      width: 100vw;
+      padding-right: ${window.innerWidth - document.body.offsetWidth}px;
+      transition: all 0s ease-in-out;
+    `;
+  },
+  enabledScroll() {
+    document.body.style.cssText = "";
+    document.body.style.cssText = `transition: all 0s ease-in-out;`;
+    window.scroll({ top: this.scrollPosition });
+    document.documentElement.style.scrollBehavior = "";
+    setTimeout(()=>{
+      document.body.style.cssText = "";
+    },200)
+  },
+};
+
 const renderModal = (data) => {
   const modal = document.createElement('div')
   modal.classList.add('modal')
@@ -142,12 +169,36 @@ const renderModal = (data) => {
   modalMain.append(modalClose)
   modal.append(modalMain)
   document.body.append(modal)
+  scrollService.disabledScroll();
 
   modal.addEventListener('click', ({target}) => {
     if (target === modal || target.closest('.modal__close')) {
       modal.remove()
     }
   })
+
+  const closeModal = () => {
+    modal.remove();
+    document.removeEventListener('keydown', handleEscKey);
+    scrollService.enabledScroll();
+  };
+
+  const handleEscKey = (event) => {
+    if (event.key === 'Escape') {
+      closeModal();
+    }
+  };
+
+  modal.addEventListener('click', ({ target }) => {
+    if (target === modal || target.closest('.modal__close')) {
+      closeModal();
+    }
+  });
+
+  document.body.append(modal);
+  document.addEventListener('keydown', handleEscKey);
+
+
 }
 
 const openModal = (id) => {
@@ -256,7 +307,7 @@ const init = () => {
 
   cardsList.addEventListener('keydown', ({code, target}) => {
     const vacancyCard = target.closest('.vacancy')
-    if (((code === 'Enter')|| ('NumpadEnter')) && target.closest('.vacancy')) {
+    if ((code === "Enter" || code === "NumpadEnter") && vacancyCard) {
       const vacancyID = vacancyCard.dataset.id
       openModal(vacancyID)
       target.blur()
