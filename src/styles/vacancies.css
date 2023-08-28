@@ -41,23 +41,33 @@
     display: flex;
     align-items: center;
     margin-bottom: 24px;
-    transition: margin-bottom 0.2s ease-in-out;
-    transition-delay: 0.2s;
+    transition-property: margin-bottom, color;
+    transition-duration: 0.2s;
+    transition-timing-function: ease-in-out;
+    transition-delay: 0.2s, 0s;
+    color: #2A18FF;
+
   }
-  .vacancies__filter-button:after {
-    content: '';
+
+  .vacancies__filter-button:hover:not(:focus) {
+    color: #A6ADFF;
+  }
+
+  .vacancies__filter-button-arrow {
     display: block;
     width: 20px;
     height: 20px;
-    background: url("../images/arrow-blue.svg") no-repeat center -2px;
+    transition: transform 0.2s ease-in-out;
   }
 
   .vacancies__filter-button_active {
     margin-bottom: 32px;
-    transition-delay: 0s;
+    transition-delay: 0s, 0s;
+
   }
 
-  .vacancies__filter-button_active:after {
+  .vacancies__filter-button_active .vacancies__filter-button-arrow {
+
     transform: rotate(180deg);
   }
 
@@ -67,6 +77,7 @@
     height: 0;
     overflow: hidden;
     transition: height 0.4s ease-in-out;
+    padding-bottom: 0;
   }
 
   .vacancies__filter_active {

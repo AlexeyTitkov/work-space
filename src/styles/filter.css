@@ -65,13 +65,20 @@
   margin-bottom: 8px;
 }
 
-.filter__buttons {
-}
-
 .filter__button {
   padding: 8px 24px;
   border-radius: 4px;
   background-color: #A6ADFF;
+  border: 2px solid transparent;
+}
+
+.filter__button:focus-visible {
+  border-color:#4F58BE;
+}
+
+.filter__button:hover {
+  color: #FFFFFF;
+  background-color: #2A18FF;
 }
 
 @media (max-width: 940px) {

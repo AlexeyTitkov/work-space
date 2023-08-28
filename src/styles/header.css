@@ -9,10 +9,20 @@
 }
 
 .header__link{
-  padding: 12px 32px;
+  padding: 10px 30px;
   border-radius: 8px;
   background-color: #A6ADFF;
   font-size: 20px;
+  border: 2px solid transparent;
+}
+
+.header__link:focus-visible {
+  border-color:#4F58BE;
+}
+
+.header__link:hover {
+  color: #FFFFFF;
+  background-color: #2A18FF;
 }
 
 @media (max-width: 1140px) {

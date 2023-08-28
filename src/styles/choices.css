@@ -9,6 +9,14 @@
   border: 0;
 }
 
+.choices__list--dropdown, .choices__list[aria-expanded] {
+  z-index: 2;
+}
+
+.is-flipped .choices__list--dropdown, .is-flipped .choices__list[aria-expanded]{
+
+}
+
 .choices__list--single {
   padding: 0;
 }
