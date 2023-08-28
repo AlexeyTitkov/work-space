@@ -254,6 +254,15 @@ const init = () => {
     }
   })
 
+  cardsList.addEventListener('keydown', ({code, target}) => {
+    const vacancyCard = target.closest('.vacancy')
+    if (((code === 'Enter')|| ('NumpadEnter')) && target.closest('.vacancy')) {
+      const vacancyID = vacancyCard.dataset.id
+      openModal(vacancyID)
+      target.blur()
+    }
+  })
+
   // filter
 
   filterForm.addEventListener('submit', (event) => {

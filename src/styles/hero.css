@@ -29,7 +29,7 @@
 }
 
 @media (max-width: 1140px) {
-  .hero__container {
+  .hero {
     padding-top: 40px;
     padding-bottom: 40px;
   }
@@ -51,7 +51,7 @@
 }
 
 @media (max-width: 940px) {
-  .hero__container {
+  .hero {
     padding-top: 30px;
     padding-bottom: 30px;
   }
@@ -63,6 +63,7 @@
 
   .hero__container:after {
     width: 269px;
+    top: -6px;
   }
 
   .hero__title {
@@ -75,12 +76,12 @@
 @media (max-width: 640px) {
   .hero{
     padding-top: 20px;
-    padding-bottom: 20px;
+    padding-bottom: 10px;
   }
   
   .hero__container{
     padding-top: 0;
-    padding-bottom: 262px;
+    padding-bottom: 234px;
   }
 
   .hero__title {

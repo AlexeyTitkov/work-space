@@ -44,13 +44,12 @@
     transition: margin-bottom 0.2s ease-in-out;
     transition-delay: 0.2s;
   }
-
   .vacancies__filter-button:after {
     content: '';
     display: block;
     width: 20px;
     height: 20px;
-    background: url("../images/arrow-blue.svg") no-repeat center;
+    background: url("../images/arrow-blue.svg") no-repeat center -2px;
   }
 
   .vacancies__filter-button_active {
@@ -82,7 +81,9 @@
 
 
 @media (max-width: 640px) {
-
+  .vacancies__filter {
+    padding-bottom: 0;
+  }
   .vacancies__filter-button_active {
     margin-bottom: 24px;
   }
