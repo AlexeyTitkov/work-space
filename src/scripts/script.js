@@ -219,12 +219,12 @@ const observer = new IntersectionObserver((entries) => {
 const openFilter = (button, dropDown, classNameButton, classNameDropDown) => {
   dropDown.style.height = `${dropDown.scrollHeight}px`
   button.classList.add(classNameButton)
-  button.classList.add(classNameDropDown)
+  dropDown.classList.add(classNameDropDown)
 }
 
 const closeFilter = (button, dropDown, classNameButton, classNameDropDown) => {
   button.classList.remove(classNameButton)
-  button.classList.remove(classNameDropDown)
+  dropDown.classList.remove(classNameDropDown)
   dropDown.style.height = ``
 }
 
