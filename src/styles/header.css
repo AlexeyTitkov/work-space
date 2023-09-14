@@ -6,14 +6,28 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.header__links{
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
 }
 
 .header__link{
-  padding: 10px 30px;
+  padding: 12px 32px;
   border-radius: 8px;
   background-color: #A6ADFF;
   font-size: 20px;
+  text-align: center;
   border: 2px solid transparent;
+}
+
+.header__link_o {
+  background-color: transparent;
+  border: 1px solid #A6ADFF;
 }
 
 .header__link:focus-visible {
@@ -45,8 +59,18 @@
   .header {
     padding: 24px 0 20px;
   }
-  
-  .header__link {
-    display: none;
+
+  .header__container {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .header__links {
+    max-width: 290px;
+  }
+
+  .header__link{
+    width: 100%;
   }
 }

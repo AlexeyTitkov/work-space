@@ -1,0 +1,52 @@
+.file {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+
+.file__wrap-preview {
+  background-color: #fff;
+  min-width: 280px;
+  height: 80px;
+  margin-bottom: 12px;
+}
+
+.file__wrap-preview:active {
+  min-width: auto;
+}
+
+.file__wrap-button {
+  position: relative;
+}
+
+.file__label {
+  display: inline-block;
+  padding: 8px 24px;
+  border-radius: 4px;
+  background-color: #A6ADFF;
+  cursor: pointer;
+  border: 2px solid transparent;
+}
+
+.file__label:focus-visible {
+  border-color: #4F58BE;
+}
+
+.file__label:hover {
+  color: #FFFFFF;
+  background-color: #2A18FF;
+}
+
+.file__input {
+  opacity: 0;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  top: 50%;
+  left: 50%;
+}
+
+.file__wrap-button:focus-within .file__label {
+  border-color: #4F58BE;
+}
