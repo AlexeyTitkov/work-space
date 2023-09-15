@@ -1,4 +1,4 @@
-const API_URL = "https://workspace-methed.vercel.app/";
+const API_URL = "https://diamond-full-garden.glitch.me/";
 const LOCATION_URL = "api/locations";
 const VACANCY_URL = "api/vacancy";
 const cardsList = document.querySelector('.cards__list')
@@ -374,11 +374,12 @@ try {
         .addField('#salary', [{rule: 'required', errorMessage: 'Введите заработную плату'}])
         .addField('#location', [{rule: 'required', errorMessage: 'Введите название города'}])
         .addField('#email', [{rule: 'required', errorMessage: 'Введите e-mail'},
-                             {rule: 'email', errorMessage: 'Введите корректный e-mail'}])
+          {rule: 'email', errorMessage: 'Введите корректный e-mail'}])
         .addField('#description', [{rule: 'required', errorMessage: 'Введите описание'}])
         .addRequiredGroup('#format', 'Выберите формат')
         .addRequiredGroup('#experience', 'Выберите опыт')
         .addRequiredGroup('#type', 'Выберите занятость')
+    return validate
   }
 
   const fileController = () => {
@@ -402,13 +403,34 @@ try {
 
   const formController = () => {
     const form = document.querySelector('.employer__form')
+    const employerError= document.querySelector('.employer__error')
+    const validate = validationForm(form)
 
-    validationForm(form)
-
-    form.addEventListener('submit', (event) => {
+    form.addEventListener('submit', async (event) => {
       event.preventDefault()
 
-      console.log('Отправка на сервер');
+      if (!validate.isValid) {
+        return
+      }
+
+      try {
+        const formData = new FormData(form)
+        employerError.textContent = 'Идёт оправка на сервер. Пожалуйста, не закрывайте окно.'
+        const response = await fetch(`${API_URL}${VACANCY_URL}`, {
+          method: 'POST',
+          body: formData,
+        })
+
+        if (response.ok) {
+          employerError.textContent = ''
+          window.location.href = 'index.html'
+        }
+      } catch (error) {
+        employerError.textContent = 'Произошла ошибка'
+        console.error(error)
+      }
+
+
     })
   }
 
