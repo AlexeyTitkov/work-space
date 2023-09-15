@@ -23,7 +23,7 @@
   <link rel="stylesheet" href="./src/styles/file.css">
   <link rel="stylesheet" href="./src/styles/radio.css">
 
-  <script src="./src/scripts/choices.min.js" defer></script>
+  <script src="./src/scripts/just-validate.min.js" defer></script>
   <script src="./src/scripts/script.js" defer></script>
 
 </head>
@@ -88,7 +88,7 @@
         </fieldset>
 
         <div class="employer__radio-buttons">
-          <fieldset class="employer__fieldset_radio">
+          <fieldset class="employer__fieldset_radio" id="format">
             <legend class="employer__legend">Формат</legend>
 
             <label class="employer__label_radio radio">
@@ -104,7 +104,7 @@
             </label>
           </fieldset>
 
-          <fieldset class="employer__fieldset_radio">
+          <fieldset class="employer__fieldset_radio" id="experience">
             <legend class="employer__legend">Опыт работы</legend>
 
             <label class="employer__label_radio radio">
@@ -124,7 +124,7 @@
             </label>
           </fieldset>
 
-          <fieldset class="employer__fieldset_radio">
+          <fieldset class="employer__fieldset_radio" id="type">
             <legend class="employer__legend">Занятость</legend>
 
             <label class="employer__label_radio radio">
@@ -149,7 +149,6 @@
         <div class="employer__wrap-submit">
           <button class="employer__submit" type="submit">Добавить вакансию</button>
           <div class="employer__error">
-            <p>Ошибка. Заполните все поля</p>
           </div>
         </div>
       </form>

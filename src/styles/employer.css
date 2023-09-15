@@ -32,9 +32,10 @@
 .employer__input {
   border-radius: 4px;
   padding: 0 16px;
-  border: 0;
   height: 32px;
   width: 100%;
+  outline: 0;
+  border: 1px solid transparent;
 }
 
 .employer__input::placeholder {
@@ -46,8 +47,19 @@
   min-height: 140px;
   width: 100%;
   resize: vertical;
-  border: 0;
   padding: 7px 16px;
+  outline: 0;
+  border: 1px solid transparent;
+}
+
+.employer__input.invalid,
+.employer__textarea.invalid {
+  border-color: #F00;
+}
+
+.employer__input:focus-visible,
+.employer__textarea:focus-visible {
+  border-color: #4F58BE;
 }
 
 .employer__radio-buttons {
@@ -164,7 +176,7 @@
   .employer {
     padding: 20px 0 40px;
   }
-  
+
   .employer__title {
     font-size: 20px;
     letter-spacing: 0.4px;

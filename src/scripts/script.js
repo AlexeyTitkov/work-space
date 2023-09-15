@@ -72,9 +72,9 @@ const loadMoreVacancies = () => {
     urlWithParams.searchParams.set('limit', window.innerWidth < 768 ? 6 : 12)
 
     getData(urlWithParams, renderMoreVacancies, renderError).then(() => {
-        lastUrl = urlWithParams
+          lastUrl = urlWithParams
 
-      }
+        }
     )
   }
 }
@@ -84,7 +84,6 @@ const renderError = (err) => console.warn(err)
 
 
 const createDetailVacancy = ({
-                               id,
                                title,
                                company,
                                description,
@@ -143,11 +142,11 @@ const scrollService = {
   enabledScroll() {
     document.body.style.cssText = "";
     document.body.style.cssText = `transition: all 0s ease-in-out;`;
-    window.scroll({ top: this.scrollPosition });
+    window.scroll({top: this.scrollPosition});
     document.documentElement.style.scrollBehavior = "";
-    setTimeout(()=>{
+    setTimeout(() => {
       document.body.style.cssText = "";
-    },200)
+    }, 200)
   },
 };
 
@@ -189,7 +188,7 @@ const renderModal = (data) => {
     }
   };
 
-  modal.addEventListener('click', ({ target }) => {
+  modal.addEventListener('click', ({target}) => {
     if (target === modal || target.closest('.modal__close')) {
       closeModal();
     }
@@ -229,117 +228,196 @@ const closeFilter = (button, dropDown, classNameButton, classNameDropDown) => {
 }
 
 const init = () => {
-  const filterForm = document.querySelector('.filter__form')
-  const vacanciesFilterButton = document.querySelector('.vacancies__filter-button')
-  const vacanciesFilter = document.querySelector('.vacancies__filter')
+  try {
+    const filterForm = document.querySelector('.filter__form')
+    const vacanciesFilterButton = document.querySelector('.vacancies__filter-button')
+    const vacanciesFilter = document.querySelector('.vacancies__filter')
 
-  vacanciesFilterButton.addEventListener('click', () => {
-    if (vacanciesFilterButton.classList.contains('vacancies__filter-button_active')) {
-      closeFilter(
-        vacanciesFilterButton,
-        vacanciesFilter,
-        'vacancies__filter-button_active',
-        'vacancies__filter_active',)
-    } else {
-      openFilter(
-        vacanciesFilterButton,
-        vacanciesFilter,
-        'vacancies__filter-button_active',
-        'vacancies__filter_active',)
-    }
+    vacanciesFilterButton.addEventListener('click', () => {
+      if (vacanciesFilterButton.classList.contains('vacancies__filter-button_active')) {
+        closeFilter(
+            vacanciesFilterButton,
+            vacanciesFilter,
+            'vacancies__filter-button_active',
+            'vacancies__filter_active',)
+      } else {
+        openFilter(
+            vacanciesFilterButton,
+            vacanciesFilter,
+            'vacancies__filter-button_active',
+            'vacancies__filter_active',)
+      }
 
-  })
-
-  window.addEventListener('resize', () => {
-    if (vacanciesFilterButton.classList.contains('vacancies__filter-button_active')) {
-      closeFilter(
-        vacanciesFilterButton,
-        vacanciesFilter,
-        'vacancies__filter-button_active',
-        'vacancies__filter_active',)
-    }
-  })
-
-  // select city_
-  const citySelect = document.querySelector('#city')
-  const cityChoices = new Choices(citySelect, {
-    itemSelectText: '',
-  });
-
-
-  getData(
-    `${API_URL}${LOCATION_URL}`,
-    (locationData) => {
-      const locations = locationData.map(location => ({
-        value: location
-      }))
-      cityChoices.setChoices(locations, 'value', 'label', false)
-    },
-    (err) => {
-      console.log(err);
-    },
-  )
-
-  // cards
-
-
-  const urlWithParams = new URL(`${API_URL}${VACANCY_URL}`)
-
-  urlWithParams.searchParams.set('limit', window.innerWidth < 768 ? 6 : 12)
-  urlWithParams.searchParams.set('page', 1)
-  getData(
-    urlWithParams,
-    renderVacancies,
-    renderError,
-  ).then(() => {
-    lastUrl = urlWithParams
-  })
-
-  // modal
-
-  cardsList.addEventListener('click', ({target}) => {
-    const vacancyCard = target.closest('.vacancy')
-    if (vacancyCard) {
-      const vacancyID = vacancyCard.dataset.id
-      openModal(vacancyID)
-    }
-  })
-
-  cardsList.addEventListener('keydown', ({code, target}) => {
-    const vacancyCard = target.closest('.vacancy')
-    if ((code === "Enter" || code === "NumpadEnter") && vacancyCard) {
-      const vacancyID = vacancyCard.dataset.id
-      openModal(vacancyID)
-      target.blur()
-    }
-  })
-
-  // filter
-
-  filterForm.addEventListener('submit', (event) => {
-    event.preventDefault()
-    const formData = new FormData(filterForm)
-
-    const urlWithParam = new URL(`${API_URL}${VACANCY_URL}`)
-
-    formData.forEach((value, key) => {
-      urlWithParam.searchParams.append(key, value)
     })
+
+    window.addEventListener('resize', () => {
+      if (vacanciesFilterButton.classList.contains('vacancies__filter-button_active')) {
+        closeFilter(
+            vacanciesFilterButton,
+            vacanciesFilter,
+            'vacancies__filter-button_active',
+            'vacancies__filter_active',)
+      }
+    })
+
+    // select city_
+    const citySelect = document.querySelector('#city')
+    const cityChoices = new Choices(citySelect, {
+      itemSelectText: '',
+    });
 
 
     getData(
-      urlWithParam,
-      renderVacancies,
-      renderError).then(() => {
-      lastUrl = urlWithParam
-    }).then(() => {
-      closeFilter(
-        vacanciesFilterButton,
-        vacanciesFilter,
-        'vacancies__filter-button_active',
-        'vacancies__filter_active',)
+        `${API_URL}${LOCATION_URL}`,
+        (locationData) => {
+          const locations = locationData.map(location => ({
+            value: location
+          }))
+          cityChoices.setChoices(locations, 'value', 'label', false)
+        },
+        (err) => {
+          console.log(err);
+        },
+    )
+
+    // cards
+
+
+    const urlWithParams = new URL(`${API_URL}${VACANCY_URL}`)
+
+    urlWithParams.searchParams.set('limit', window.innerWidth < 768 ? 6 : 12)
+    urlWithParams.searchParams.set('page', 1)
+    getData(
+        urlWithParams,
+        renderVacancies,
+        renderError,
+    ).then(() => {
+      lastUrl = urlWithParams
     })
-  })
+
+    // modal
+
+    cardsList.addEventListener('click', ({target}) => {
+      const vacancyCard = target.closest('.vacancy')
+      if (vacancyCard) {
+        const vacancyID = vacancyCard.dataset.id
+        openModal(vacancyID)
+      }
+    })
+
+    cardsList.addEventListener('keydown', ({code, target}) => {
+      const vacancyCard = target.closest('.vacancy')
+      if ((code === "Enter" || code === "NumpadEnter") && vacancyCard) {
+        const vacancyID = vacancyCard.dataset.id
+        openModal(vacancyID)
+        target.blur()
+      }
+    })
+
+    // filter
+
+    filterForm.addEventListener('submit', (event) => {
+      event.preventDefault()
+      const formData = new FormData(filterForm)
+
+      const urlWithParam = new URL(`${API_URL}${VACANCY_URL}`)
+
+      formData.forEach((value, key) => {
+        urlWithParam.searchParams.append(key, value)
+      })
+
+
+      getData(
+          urlWithParam,
+          renderVacancies,
+          renderError).then(() => {
+        lastUrl = urlWithParam
+      }).then(() => {
+        closeFilter(
+            vacanciesFilterButton,
+            vacanciesFilter,
+            'vacancies__filter-button_active',
+            'vacancies__filter_active',)
+      })
+    })
+  } catch (error) {
+    console.log('error: ', error);
+    console.warn('Мы не на странице index.html')
+  }
+}
+
+try {
+  const validationForm = (form) => {
+    const validate = new JustValidate(form, {
+      errorLabelStyle: {color: '#F00'},
+      errorFieldStyle: {borderColor: '#F00'},
+      errorFieldCssClass: 'invalid',
+      errorsContainer: document.querySelector('.employer__error'),
+    });
+    validate
+        .addField('#logo', [
+          {rule: 'minFilesCount', value: 1, errorMessage: 'Добавьте один файл'},
+          {
+            rule: 'files',
+            value: {
+              files: {
+                extensions: ['jpeg', 'jpg', 'png'],
+                maxSize: 102400,
+                types: ['image/jpeg', 'image/jpg', 'image/png'],
+              },
+            },
+            errorMessage: 'Размер файла должен быть не больше 100КБ'
+          },
+        ])
+        .addField('#company', [{rule: 'required', errorMessage: 'Введите название компании'}])
+        .addField('#title', [{rule: 'required', errorMessage: 'Введите название вакансии'}])
+        .addField('#salary', [{rule: 'required', errorMessage: 'Введите заработную плату'}])
+        .addField('#location', [{rule: 'required', errorMessage: 'Введите название города'}])
+        .addField('#email', [{rule: 'required', errorMessage: 'Введите e-mail'},
+                             {rule: 'email', errorMessage: 'Введите корректный e-mail'}])
+        .addField('#description', [{rule: 'required', errorMessage: 'Введите описание'}])
+        .addRequiredGroup('#format', 'Выберите формат')
+        .addRequiredGroup('#experience', 'Выберите опыт')
+        .addRequiredGroup('#type', 'Выберите занятость')
+  }
+
+  const fileController = () => {
+    const file = document.querySelector('.file')
+    const preview = file.querySelector('.file__preview')
+    const input = file.querySelector('.file__input')
+
+    input.addEventListener('change', (event) => {
+      if (event.target.files.length > 0) {
+        const src = URL.createObjectURL(event.target.files[0])
+        file.classList.add('file_active')
+        preview.src = src
+        preview.style.display = 'block'
+      } else {
+        file.classList.remove('file_active')
+        preview.src = ''
+        preview.style.display = 'none'
+      }
+    })
+  }
+
+  const formController = () => {
+    const form = document.querySelector('.employer__form')
+
+    validationForm(form)
+
+    form.addEventListener('submit', (event) => {
+      event.preventDefault()
+
+      console.log('Отправка на сервер');
+    })
+  }
+
+  formController()
+  fileController()
+} catch (error) {
+  console.log('error: ', error);
+  console.warn('Мы не на странице employer.html')
 }
 
 init()
+
