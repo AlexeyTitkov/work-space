@@ -57,6 +57,11 @@
   border-color: #F00;
 }
 
+.employer__legend.invalid,
+.employer__legend.invalid {
+  color: #F00;
+}
+
 .employer__input:focus-visible,
 .employer__textarea:focus-visible {
   border-color: #4F58BE;
