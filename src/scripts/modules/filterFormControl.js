@@ -1,7 +1,7 @@
 import {API_URL, filterForm, appData, vacanciesFilter, vacanciesFilterButton, VACANCY_URL} from "../script.js";
 import {getData} from "./getData.js";
 import {renderVacancies} from "./renderVacancies.js";
-import {closeFilter} from "./filterControl.js";
+import {closeFilter} from "./filterToggle.js";
 import {renderError} from "./renderError.js";
 
 export const filterFormControl = () => {

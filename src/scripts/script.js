@@ -1,4 +1,4 @@
-import {filterToggle} from "./modules/filterControl.js";
+import {filterToggle} from "./modules/filterToggle.js";
 import {selectCityControl} from "./modules/selectCityControl.js";
 import {vacancyControl} from "./modules/vacancyControl.js";
 import {modalVacancyControl} from "./modules/modalVacancyControl.js";
